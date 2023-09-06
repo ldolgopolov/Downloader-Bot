@@ -26,14 +26,13 @@ async def get_url(message: Message, bot: Bot, state: FSMContext):
 
         await message.answer("Downloading may take some time🕐")
         await downloading_video(url, title)
+        await state.clear()
         await message.answer("The video has begun to be sent to you📨")
         sticker = await bot.send_sticker(message.chat.id, sticker='CAACAgIAAxkBAAEKPT5k-QYiWW9suC0AAbvsB3dMTI0z54wAAkEBAALNGzAI8fBiGN_2llgwBA')
         await send_video(message, bot, title)
         await bot.delete_message(message.chat.id, message_id=sticker.message_id)
         await message.answer("<b>It's done!✅</b>", parse_mode='HTML')
         await delete_video(title)
-
-        await state.clear()
 
         await send_typing_action_1sek(message, bot)
         await message.answer("<b>Thank you for using it!</b>😌", parse_mode='HTML')
