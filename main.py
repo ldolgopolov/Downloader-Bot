@@ -6,7 +6,9 @@ import asyncio
 from aiogram.filters import Command, CommandStart, Text, Filter
 
 from handlers.admin.admin_notify import on_startup, on_shutdown
+from handlers.users.get_url_actions import button_action, get_url
 from handlers.users.start_actions import start
+from states.url_state import Get_URL_video
 
 async def main():
     logging.basicConfig(level=logging.INFO,
@@ -18,7 +20,8 @@ async def main():
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
 
-    
+    dp.message.register(button_action, F.text == 'Download video🔄')
+    dp.message.register(get_url, Get_URL_video.GET_URL)
 
     dp.message.register(start, CommandStart())
 
