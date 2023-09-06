@@ -41,6 +41,7 @@ async def get_url(message: Message, bot: Bot, state: FSMContext):
         await message.answer("Do I need to download anything else?🤨", reply_markup=get_main_menu())
 
     except Exception:
+        await state.clear()
         await message.answer("<b>Unable to download🚫</b>", parse_mode='HTML')
         await send_typing_action_1sek(message, bot)
         await message.answer("Most likely the link is wrong or the video does not exist❌", reply_markup=get_main_menu())
