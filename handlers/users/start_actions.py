@@ -14,4 +14,4 @@ async def start(message: Message, bot: Bot):
         await message.answer(f"<b>Welcome, {user_name} {user_sname}!</b>", parse_mode='HTML')
 
     await send_typing_action_1sek(message, bot)
-    await message.answer("If you want to download a video from YouTube, click on the <b>Download video🔄</b> button😉", parse_mode='HTML', reply_markup=get_main_menu())
+    await message.answer("If you want to download a video or music from YouTube, click on the\n<b>Download video▶️</b> or <b>Download music🎵</b> button😉", parse_mode='HTML', reply_markup=get_main_menu())
